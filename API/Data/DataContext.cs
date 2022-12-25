@@ -10,6 +10,15 @@ namespace API.Data
         }
 
         public DbSet<AppUser> Users { get; set; }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Photo>(e =>
+            {
+                e.HasKey(p => new { p.Id });
+                e.HasOne(p => p.AppUser)
+                .WithMany(b => b.Photos)
+                .HasForeignKey(p => p.AppUserId);
+            });  
+        }   
     }
 }

@@ -24,9 +24,9 @@ namespace API.Controllers
         }
 
         [HttpGet("not-found")]
-        public ActionResult<AppUser> GetNotFound() 
+        public async Task<ActionResult<AppUser>> GetNotFound()
         {
-            var thing = _context.Users.Find(-1);
+            var thing = await _context.Users.FindAsync(-1);
             if (thing == null)  return NotFound();
             return thing;
         }
@@ -34,7 +34,7 @@ namespace API.Controllers
         [HttpGet("server-error")]
         public ActionResult<string> GetServerError() 
         {
-            var thing = _context.Users.Find(-1);
+            var thing = _context.Users.FindAsync(-1);
             var thingToReturn = thing.ToString();
             return thingToReturn;
         }
