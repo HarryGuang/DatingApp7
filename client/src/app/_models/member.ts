@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { Photo } from "./photo";
 
 export interface Member {

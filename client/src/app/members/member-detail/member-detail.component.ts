@@ -31,16 +31,15 @@ export class MemberDetailComponent implements OnInit {
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
-        preview: false
-      }
-    ];    
+        preview: false,
+      },
+    ];
   }
 
-  getImages() { 
+  getImages() {
     if (!this.member) return [];
     const imageUrls = [];
-    for (const photo of this.member.photos)
-    {
+    for (const photo of this.member.photos) {
       imageUrls.push({
         small: photo.url,
         medium: photo.url,
