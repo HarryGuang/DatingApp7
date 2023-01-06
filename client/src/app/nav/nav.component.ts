@@ -18,7 +18,6 @@ export class NavComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    private toastr: ToastrService,
     private memberService: MembersService
   ) {}
 
@@ -28,20 +27,6 @@ export class NavComponent implements OnInit {
     this.accountService.login(this.model).subscribe({
       next: () => {
         this.router.navigateByUrl('/members');
-        //this.memberService.resetUserParams();
-
-    this.accountService.currentUser$.pipe(take(1)).subscribe({
-      next: (user) => {
-        if (user) {
-          this.memberService.memberCache = new Map();
-          this.memberService.userParams = new UserParams(user);
-          this.memberService.user = user;
-        }
-      },
-    });
-        //console.log(this.memberService.getUserParams());
-        //console.log(this.memberService.memberCache);
-        
       },
     });
   }

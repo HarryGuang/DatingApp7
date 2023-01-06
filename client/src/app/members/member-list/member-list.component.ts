@@ -26,6 +26,7 @@ export class MemberListComponent implements OnInit {
     private membersService: MembersService
   ) {
     this.userParams = this.membersService.getUserParams();
+    console.log(this.userParams);
   }
 
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class MemberListComponent implements OnInit {
   }
 
   loadMembers() {
+    console.log(this.userParams);
     if (this.userParams) {
       this.membersService.setUserParams(this.userParams);
       this.membersService.getMembers(this.userParams).subscribe({
